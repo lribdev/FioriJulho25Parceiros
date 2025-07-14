@@ -60,7 +60,7 @@ function (Controller, Filter, FilterOperator) {
             let oRoteador = this.getOwnerComponent().getRouter();
 
             //efetua a navegação
-            oRoteador.navTo("DetalheParceiro", {
+            oRoteador.navTo("RouteDetalheParceiro", {
                 idParceiro: sIdParceiro
             });
 

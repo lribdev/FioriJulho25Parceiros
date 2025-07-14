@@ -93,8 +93,7 @@
         "viewType": "XML",
         "async": true,
         "viewPath": "trainning.parceiros.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
+        "controlId": "fcl",
         "clearControlAggregation": false
       },
       "routes": [
@@ -104,6 +103,13 @@
           "target": [
             "TargetParceiros"
           ]
+        },
+        {
+          "name": "RouteDetalheParceiro",
+          "pattern": "parceiro/{idParceiro}",
+          "target": [
+            "TargetDetalheParceiro"
+          ]
         }
       ],
       "targets": {
@@ -112,7 +118,16 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "Parceiros",
-          "viewName": "Parceiros"
+          "viewName": "Parceiros",
+          "controlAggregation": "beginColumnPages"
+        },
+        "TargetDetalheParceiro": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "DetalheParceiro",
+          "viewName": "DetalheParceiro",
+          "controlAggregation": "midColumnPages"          
         }
       }
     },
