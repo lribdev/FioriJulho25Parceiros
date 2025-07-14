@@ -1,0 +1,27 @@
+<mvc:View controllerName="trainning.parceiros.controller.Parceiros"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <List id="listaParceiros" 
+              mode="SingleSelectMaster"
+              items="{/I_BusinessPartner}"
+              itemPress="aoSelecionarParceiro">
+
+              <headerToolbar>
+                <Toolbar>
+                    <SearchField width="30%" liveChange="aoPesquisarParceiro"/>
+                    <ToolbarSpacer />
+                </Toolbar>      
+              </headerToolbar>
+              
+              <!--agregação default pode ser omitida-->
+                <StandardListItem title="{BusinessPartnerName}" description="{BusinessPartner}" type="Active" />
+
+
+
+        </List>
+
+
+    </Page>
+</mvc:View>
