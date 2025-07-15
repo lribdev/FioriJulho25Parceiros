@@ -23,7 +23,7 @@
 			singleContainerFullSize="false" >
 			<f:content>
                 <Label text="Nome 1" />
-                <Input value="{BusinessPartnerName}" editable="false" />
+                <Input value="{PartnerName1}" editable="false" />
                 <Label text="Nome 2" />
                 <Input value="{PartnerName2}" editable="false" />
                 <Label text="Termo de Pesquisa 1" />

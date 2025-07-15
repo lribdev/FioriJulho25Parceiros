@@ -28,8 +28,8 @@ sap.ui.define(
             let sIdParceiro = oEvent.getParameters().arguments.idParceiro;
 
             //monta o caminho pro Read
-            let sCaminho = oModel.createKey("/I_BusinessPartner", {
-                BusinessPartner: sIdParceiro
+            let sCaminho = oModel.createKey("/Parceiros", {
+                PartnerId: sIdParceiro
             });
 
 
