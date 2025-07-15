@@ -17,9 +17,6 @@
               
               <!--agregação default pode ser omitida-->
                 <StandardListItem title="{BusinessPartnerName}" description="{BusinessPartner}" type="Active" />
-
-
-
         </List>
 
 

@@ -108,6 +108,7 @@
           "name": "RouteDetalheParceiro",
           "pattern": "parceiro/{idParceiro}",
           "target": [
+            "TargetParceiros",
             "TargetDetalheParceiro"
           ]
         }
