@@ -33,6 +33,10 @@
           "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
         }
+      },
+      "novoParceiro": {
+        "uri": "model/novoParceiro.json",
+        "type": "JSON"
       }
     }
   },
@@ -78,6 +82,10 @@
         "settings": {
           "useBatch": false
         }
+      },
+      "novoParceiro": {
+        "dataSource": "novoParceiro",
+        "type": "sap.ui.model.json.JSONModel"
       }
     },
     "resources": {

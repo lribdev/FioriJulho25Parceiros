@@ -30,6 +30,10 @@ sap.ui.define(
             //navega para rota de parceiros
             oRoteador.navTo("RouteParceiros");
 
+        },
+
+        onPressSalvar: function(oEvent){
+          debugger;
         }
 
       });
