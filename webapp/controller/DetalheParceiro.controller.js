@@ -9,6 +9,9 @@ sap.ui.define(
       return BaseController.extend("trainning.parceiros.controller.DetalheParceiro", {
         onInit: function() {
 
+            //declarando a variável que guarda o fragmento instanciado (para evitar de instanciar várias vezes)
+            this._oFragment;
+
             //resgata o roteador no pai do controller (Component.js)
             let oRoteador = this.getOwnerComponent().getRouter();
 
@@ -32,31 +35,38 @@ sap.ui.define(
                 PartnerId: sIdParceiro
             });
 
-
             //acessa a view
             let oView = this.getView();
 
             //associa os dados do parceiro selecionado diretamente na view
             oView.bindElement(sCaminho);
 
+            //resgata o modelo de modo
+            let oModeloModo = this.getOwnerComponent().getModel("modo");
+
+            //altera a propriedade editável para false para habilitar todos os inputs do formulário
+            oModeloModo.setProperty("/editavel", false);
+
             //carrega o fragmento de detalhe
-            Fragment.load({
-               name: "trainning.parceiros.view.fragment.formParceiro",
-               controller: this 
-            }).then( oFragment => {
+            if(!this._oFragment){
+                Fragment.load({
+                    name: "trainning.parceiros.view.fragment.formParceiro",
+                    controller: this 
+                 }).then( oFragment => {
+                    
+                    //guarda o fragmento instanciado na variável
+                    this._oFragment = oFragment; 
 
-                //inclui como dependente da view (inclui o fragmento no ciclo de vida da view)
-                this.getView().addDependent(oFragment);
-
-
-                //exibe o fragmento via método addContent da página
-                this.getView().byId("detalheParceiro").addContent(oFragment);
-
-            });
-
-
+                    //inclui como dependente da view (inclui o fragmento no ciclo de vida da view)
+                     this.getView().addDependent(oFragment);
+                     //exibe o fragmento via método addContent da página
+                     this.getView().byId("detalheParceiro").addContent(this._oFragment);
+                 });     
+            }else{ //senão, basta incluir o fragmento já instanciado
+                this.getView().byId("detalheParceiro").addContent(this._oFragment);
+            }
         }
-      });
+    });
     }
   );
   

@@ -39,6 +39,12 @@ sap.ui.define([
                 oModeloLayout.setProperty("/modo", "OneColumn");
                 this.setModel(oModeloLayout, "layout");
 
+                //modelo para layout do app
+                let oModeloModo = new JSONModel();
+                oModeloModo.setProperty("/editavel", false);
+                this.setModel(oModeloModo, "modo");
+
+
             },
 
             aoNavegar: function(oEvent){
@@ -55,6 +61,7 @@ sap.ui.define([
                         sLayout = "OneColumn";
                         break;
                     case "RouteDetalheParceiro":
+                    case "RouteNovoParceiro":
                         sLayout = "TwoColumnsMidExpanded";
                         break;    
                 }

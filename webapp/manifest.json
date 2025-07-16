@@ -114,7 +114,7 @@
         },
         {
           "name": "RouteNovoParceiro",
-          "pattern": "parceiro/novo",
+          "pattern": "novo",
           "target": [
             "TargetParceiros",
             "TargetNovoParceiro"

@@ -23,27 +23,27 @@
 			singleContainerFullSize="false" >
 			<f:content>
                 <Label text="Nome 1" />
-                <Input value="{PartnerName1}" editable="false" />
+                <Input value="{PartnerName1}" editable="{modo>/editavel}" />
                 <Label text="Nome 2" />
-                <Input value="{PartnerName2}" editable="false" />
+                <Input value="{PartnerName2}" editable="{modo>/editavel}" />
                 <Label text="Termo de Pesquisa 1" />
-                <Input value="{SearchTerm1}" editable="false" />
+                <Input value="{SearchTerm1}" editable="{modo>/editavel}" />
                 <Label text="Termo de Pesquisa 2" />
-                <Input value="{SearchTerm2}" editable="false" />
+                <Input value="{SearchTerm2}" editable="{modo>/editavel}" />
                 <Label text="Rua" />
-                <Input value="{Street}" editable="false" />
+                <Input value="{Street}" editable="{modo>/editavel}" />
                 <Label text="Número" />
-                <Input value="{HouseNumber}" editable="false" />
+                <Input value="{HouseNumber}" editable="{modo>/editavel}" />
                 <Label text="Bairro" />
-                <Input value="{District}" editable="false" />
+                <Input value="{District}" editable="{modo>/editavel}" />
                 <Label text="Cidade" />
-                <Input value="{City}" editable="false" />
+                <Input value="{City}" editable="{modo>/editavel}" />
                 <Label text="Estado" />
-                <Input value="{Region}" editable="false" />
+                <Input value="{Region}" editable="{modo>/editavel}" />
                 <Label text="País" />
-                <Input value="{ZipCode}" editable="false" />
+                <Input value="{ZipCode}" editable="{modo>/editavel}" />
                 <Label text="CEP" />
-                <Input value="{Country}" editable="false" />
+                <Input value="{Country}" editable="{modo>/editavel}" />
             </f:content>
 		</f:SimpleForm>
 	</VBox>
