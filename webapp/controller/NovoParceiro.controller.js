@@ -21,6 +21,15 @@ sap.ui.define(
 
             //altera a propriedade editável para true para habilitar todos os inputs do formulário
             oModeloModo.setProperty("/editavel", true);
+        },
+
+        onPressCancelar: function(oEvent){
+            //resgata o roteador no pai do controller (Component.js)
+            let oRoteador = this.getOwnerComponent().getRouter();
+
+            //navega para rota de parceiros
+            oRoteador.navTo("RouteParceiros");
+
         }
 
       });
