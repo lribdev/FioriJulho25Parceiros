@@ -111,6 +111,14 @@
             "TargetParceiros",
             "TargetDetalheParceiro"
           ]
+        },
+        {
+          "name": "RouteNovoParceiro",
+          "pattern": "parceiro/novo",
+          "target": [
+            "TargetParceiros",
+            "TargetNovoParceiro"
+          ]
         }
       ],
       "targets": {
@@ -125,9 +133,17 @@
         "TargetDetalheParceiro": {
           "viewType": "XML",
           "transition": "slide",
-          "clearControlAggregation": false,
+          "clearControlAggregation": true,
           "viewId": "DetalheParceiro",
           "viewName": "DetalheParceiro",
+          "controlAggregation": "midColumnPages"          
+        },
+        "TargetNovoParceiro": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": true,
+          "viewId": "NovoParceiro",
+          "viewName": "NovoParceiro",
           "controlAggregation": "midColumnPages"          
         }
       }

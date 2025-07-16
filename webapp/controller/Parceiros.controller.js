@@ -65,6 +65,14 @@ function (Controller, Filter, FilterOperator) {
             });
 
 
+        },
+
+        aoCriarParceiro: function(){
+            //acessa o roteador
+            let oRoteador = this.getOwnerComponent().getRouter();
+
+            //navegação para a página de criação
+            oRoteador.navTo("RouteNovoParceiro");
         }
 
     });

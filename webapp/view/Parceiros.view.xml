@@ -12,6 +12,8 @@
                 <Toolbar>
                     <SearchField width="30%" liveChange="aoPesquisarParceiro"/>
                     <ToolbarSpacer />
+                    <Button text="{i18n>criarParceiro}" type="Emphasized" press="aoCriarParceiro" />
+
                 </Toolbar>      
               </headerToolbar>
               
