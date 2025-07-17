@@ -53,6 +53,19 @@ sap.ui.define(
             //resgata o payload da chamada de criação
             let oModeloNovoParceiro = this.getOwnerComponent().getModel("novoParceiro");
             let oDados = oModeloNovoParceiro.getProperty("/");
+            let oPayload = {};
+            oPayload.PartnerType = oDados.PartnerType;
+            oPayload.PartnerName1 = oDados.PartnerName1;
+            oPayload.PartnerName2 = oDados.PartnerName2;
+            oPayload.SearchTerm1 = oDados.SearchTerm1;
+            oPayload.SearchTerm2 = oDados.SearchTerm2;
+            oPayload.Street = oDados.Street;
+            oPayload.HouseNumber = oDados.HouseNumber;
+            oPayload.District = oDados.District;
+            oPayload.Region = oDados.Region;
+            oPayload.City = oDados.City;
+            oPayload.ZipCode = oDados.ZipCode;
+            oPayload.Country = oDados.Country;                 
 
             //resgata o modelo OData
             let oModel = this.getOwnerComponent().getModel();
@@ -61,7 +74,7 @@ sap.ui.define(
             oModel.setHeaders({ 'X-Requested-With': 'X'});            
 
             //requisição POST (OData create)
-            oModel.create("/Parceiros", oDados, {
+            oModel.create("/Parceiros", oPayload, {
                 success: oResponse => {
                     MessageToast.show("Parceiro " + oResponse.PartnerId + " criado com sucesso!");
                 },
