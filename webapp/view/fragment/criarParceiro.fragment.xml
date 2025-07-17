@@ -22,6 +22,10 @@
 			columnsM="1"
 			singleContainerFullSize="false" >
 			<f:content>
+                <Label text="{i18n>Categoria}" />
+                <Select items="{novoParceiro>/categorias}" change="aoEscolherCategoria">
+                    <core:Item key="{novoParceiro>PartnerType}" text="{novoParceiro>Texto}" />
+                </Select>   
                 <Label text="Nome 1" />
                 <Input value="{novoParceiro>/PartnerName1}" editable="{modo>/editavel}" />
                 <Label text="Nome 2" />
@@ -41,9 +45,9 @@
                 <Label text="Estado" />
                 <Input value="{novoParceiro>/Region}" editable="{modo>/editavel}" />
                 <Label text="País" />
-                <Input value="{novoParceiro>/ZipCode}" editable="{modo>/editavel}" />
-                <Label text="CEP" />
                 <Input value="{novoParceiro>/Country}" editable="{modo>/editavel}" />
+                <Label text="CEP" />
+                <Input value="{novoParceiro>/ZipCode}" editable="{modo>/editavel}" />
             </f:content>
 		</f:SimpleForm>
 	</VBox>

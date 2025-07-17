@@ -4,7 +4,7 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
     <Page>
-       <core:Fragment fragmentName="trainning.parceiros.view.fragment.formParceiro" type="XML" id="formCriarParceiro"/>   
+       <core:Fragment fragmentName="trainning.parceiros.view.fragment.criarParceiro" type="XML" id="formCriarParceiro"/>   
 
 
 

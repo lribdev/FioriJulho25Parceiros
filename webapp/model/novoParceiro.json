@@ -1,4 +1,15 @@
 {
+    "categorias": [
+        {
+            "PartnerType": "1", 
+            "Texto": "Pessoa"
+        },
+        {
+            "PartnerType": "2",
+            "Texto": "Organização"
+        }
+    ],
+    "PartnerType": "1",
     "PartnerName1": "",
     "PartnerName2": "",
     "SearchTerm1": "",

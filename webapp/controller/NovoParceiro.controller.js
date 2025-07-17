@@ -1,8 +1,10 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
+        "sap/ui/core/mvc/Controller",
+        "sap/m/MessageToast",
+        "sap/m/MessageBox"
     ],
-    function(BaseController) {
+    function(BaseController, MessageToast, MessageBox) {
       "use strict";
   
       return BaseController.extend("trainning.parceiros.controller.NovoParceiro", {
@@ -23,6 +25,20 @@ sap.ui.define(
             oModeloModo.setProperty("/editavel", true);
         },
 
+        aoEscolherCategoria: function(oEvent){
+          debugger;
+            //resgat o item clicado
+            let oItem = oEvent.getParameter('selectedItem');
+
+            //resgata o contexto de binding do item clicado e o objeto no modelo
+            let oCategoria = oItem.getBindingContext("novoParceiro").getObject();
+
+            //resgata o modelo novoParceiro e altera o valor da propriedade PartnerType
+            let oModeloNovoParceiro = this.getOwnerComponent().getModel("novoParceiro");
+            oModeloNovoParceiro.setProperty("/PartnerType", oCategoria.PartnerType);
+
+        },
+
         onPressCancelar: function(oEvent){
             //resgata o roteador no pai do controller (Component.js)
             let oRoteador = this.getOwnerComponent().getRouter();
@@ -33,9 +49,28 @@ sap.ui.define(
         },
 
         onPressSalvar: function(oEvent){
-          debugger;
-        }
 
+            //resgata o payload da chamada de criação
+            let oModeloNovoParceiro = this.getOwnerComponent().getModel("novoParceiro");
+            let oDados = oModeloNovoParceiro.getProperty("/");
+
+            //resgata o modelo OData
+            let oModel = this.getOwnerComponent().getModel();
+
+            //configura o cabeçalho da requisição para não ser um XMLHttpRequest
+            oModel.setHeaders({ 'X-Requested-With': 'X'});            
+
+            //requisição POST (OData create)
+            oModel.create("/Parceiros", oDados, {
+                success: oResponse => {
+                    MessageToast.show("Parceiro " + oResponse.PartnerId + " criado com sucesso!");
+                },
+                error: oError => {
+                  let oErro = JSON.parse(oError.responseText);
+                  MessageBox.error(oErro.error.message.value);
+                }
+            });
+        }
       });
     }
   );
