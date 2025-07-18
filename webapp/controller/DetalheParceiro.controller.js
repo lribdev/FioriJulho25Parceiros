@@ -1,9 +1,11 @@
 sap.ui.define(
     [
         "sap/ui/core/mvc/Controller",
-        "sap/ui/core/Fragment"  
+        "sap/ui/core/Fragment" ,
+        "sap/m/MessageToast",
+        "sap/m/MessageBox"
     ],
-    function(BaseController, Fragment) {
+    function(BaseController, Fragment, MessageToast, MessageBox) {
       "use strict";
   
       return BaseController.extend("trainning.parceiros.controller.DetalheParceiro", {
@@ -17,6 +19,9 @@ sap.ui.define(
 
             //interceptar a rota de detalhe e resgatar o ID do parceiro
             oRoteador.getRoute("RouteDetalheParceiro").attachPatternMatched(this.rotaDetalheParceiro, this);
+
+          //troca o tipo de binding pra bidirecional, para que aceite alterações tanto no backend quanto no frontend (através do user)
+          this.getOwnerComponent().getModel().sDefaultBindingMode = "TwoWay";            
 
 
         },
@@ -81,6 +86,72 @@ sap.ui.define(
             this.getView().byId("btnSalvar").setVisible(true);
             this.getView().byId("btnCancelar").setVisible(true);     
 
+        },
+
+        aoCancelar: function(){
+            //resgata o modelo de modo
+            let oModeloModo = this.getOwnerComponent().getModel("modo");
+
+            //altera a propriedade editável para false para habilitar todos os inputs do formulário
+            oModeloModo.setProperty("/editavel", false);
+
+            //esconde os botões salvar e cancelar
+            this.getView().byId("btnSalvar").setVisible(false);
+            this.getView().byId("btnCancelar").setVisible(false);     
+
+            //exibe o botão editar
+            this.getView().byId("btnEditar").setVisible(true);
+
+            //resgata o modelo OData
+            let oModel = this.getOwnerComponent().getModel();
+            //reset das alterações
+            oModel.resetChanges();
+
+        },
+
+        aoSalvar: function(oEvent){
+            //resgata o caminho para o update
+            let sCaminho = this.getView().getBindingContext().getPath();
+            
+            //resgata os dados a serem enviados
+            let oDados = this.getView().getBindingContext().getObject();
+
+            //resgata o modelo OData
+            let oModel = this.getOwnerComponent().getModel();
+
+            //configuração das propriedades técnicas pro PUT
+            oModel.setHeaders({ 'X-Requested-With': 'X'});
+            oModel.sDefaultUpdatedMethod = "PUT";            
+
+            //envia a requisição PUT
+            oModel.update(sCaminho, oDados, {
+                success: oResponse => {
+                    //notificação simples na tela
+                    MessageToast.show("Dados salvos com sucesso!");
+
+                    //resgata o modelo de modo para fechar o formulário
+                    let oModeloModo = this.getOwnerComponent().getModel("modo");
+                    oModeloModo.setProperty("/editavel",false);
+
+                    //habilitar o modo de visualização (salvar e cancelar escondidos e o botão editar visível)
+                    let oView = this.getView();
+                    oView.byId("btnEditar").setVisible(true);
+                    oView.byId("btnSalvar").setVisible(false);
+                    oView.byId("btnCancelar").setVisible(false);
+                },
+                error: oError => {
+                    //transforma o erro de string para JSON para poder ler o atributo error.message.value
+                    let oErro = JSON.parse(oError.responseText);
+
+                    //mensagem de erro no popup
+                    MessageBox.error(oErro.error.message.value);
+                }
+            });
+
+
+
+
+            
         }
 
 
