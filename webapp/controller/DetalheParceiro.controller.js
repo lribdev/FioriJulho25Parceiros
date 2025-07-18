@@ -65,7 +65,25 @@ sap.ui.define(
             }else{ //senão, basta incluir o fragmento já instanciado
                 this.getView().byId("detalheParceiro").addContent(this._oFragment);
             }
+        },
+
+        aoEditar: function(oEvent){
+            //resgata o modelo de modo
+            let oModeloModo = this.getOwnerComponent().getModel("modo");
+
+            //altera a propriedade editável para true para habilitar todos os inputs do formulário
+            oModeloModo.setProperty("/editavel", true);
+
+            //esconde o botão editar
+            this.getView().byId("btnEditar").setVisible(false);
+
+            //exibe os botões salvar e cancelar
+            this.getView().byId("btnSalvar").setVisible(true);
+            this.getView().byId("btnCancelar").setVisible(true);     
+
         }
+
+
     });
     }
   );

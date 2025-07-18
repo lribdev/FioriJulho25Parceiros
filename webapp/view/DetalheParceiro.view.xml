@@ -7,7 +7,9 @@
         <footer>
             <OverflowToolbar >
                 <ToolbarSpacer />
-                <Button id="btnEditar" text="{i18n>Editar}" type="Emphasized" />
+                <Button id="btnEditar" text="{i18n>Editar}" type="Emphasized" press="aoEditar"  />
+                <Button id="btnSalvar" text="{i18n>Salvar}" type="Emphasized" press="aoSalvar" visible="false" />
+                <Button id="btnCancelar" text="{i18n>Cancelar}" type="Emphasized" press="aoCancelar" visible="false" />
             </OverflowToolbar>
         </footer>
     </Page>
